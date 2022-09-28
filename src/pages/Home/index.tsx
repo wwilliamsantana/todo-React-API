@@ -1,12 +1,19 @@
 import "./styles.css"
-import { Card } from "../../Components/Card"
+import { Card, CardProps } from "../../Components/Card"
 import { useEffect, useState } from "react"
+
+
+interface ProfileProps{
+  name: string
+  avatar: string
+}
+
 
 export function Home() {
 
   const [userName, setUseName] = useState("")
-  const [userList, setUserList] = useState([])
-  const [user, setUser] = useState({name: "", avatar: ""})
+  const [userList, setUserList] = useState<CardProps[]>([])
+  const [user, setUser] = useState<ProfileProps>({} as ProfileProps)
 
   function handleAddUser(){
     const newUser = {
