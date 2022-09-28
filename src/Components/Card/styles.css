@@ -13,3 +13,7 @@
   padding: 14px;
   border-radius: 8px;
 }
+
+.card strong{
+  font-size: 18px;
+}
