@@ -1,11 +1,12 @@
 import "./styles.css"
 import { Card } from "../../Components/Card"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export function Home() {
 
   const [userName, setUseName] = useState("")
   const [userList, setUserList] = useState([])
+  const [user, setUser] = useState({name: "", avatar: ""})
 
   function handleAddUser(){
     const newUser = {
@@ -18,10 +19,13 @@ export function Home() {
     }
 
     setUserList(prevState => [...prevState, newUser])
-    console.log(userList)
-
   }
 
+  useEffect(()=> {
+    fetch("https://api.github.com/users/wwilliamsantana")
+    .then(res => res.json())
+    .then(data => setUser({name: data.name, avatar: data.avatar_url}))
+  }, [])
  
 
   return (
@@ -29,6 +33,13 @@ export function Home() {
 
       <header>
         <h1>Lista de presença</h1>
+
+        <div>
+          <strong>{user.name}</strong>
+          <img src={user.avatar} alt="" />
+        </div>
+
+
       </header>
 
       <input 
