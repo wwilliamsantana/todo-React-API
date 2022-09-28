@@ -1,4 +1,5 @@
 import "./styles.css"
+import { Card } from "../../Components/Card"
 
 export function Home() {
   
@@ -17,6 +18,10 @@ export function Home() {
         Adicionar
       </button>
 
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
 
     </div>
   )
